@@ -22,6 +22,21 @@ def calc_magnetization(N_array, betas, steps, sweeps):
     return all_magnetizations
 
 
+def calc_susceptibility(N_array, betas, steps, sweeps):
+    all_sus = []
+    for index1, i in enumerate(N_array):
+        variance = np.zeros(len(betas))
+        for index2, s in enumerate(betas):
+            helpmodel = Isingmodel(N=i)
+            grid = helpmodel.grid(i)
+            energy = helpmodel.get_energy(grid)
+            spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
+            sweep_index = int(sweeps[index1])
+            variance[index2] = s * (
+                            mag_squared[-sweep_index:].mean() - spins[-sweep_index:].mean() ** 2) / i ** 2
+        all_sus.append(variance)
+    return all_sus
+
 class Isingmodel:
     def __init__(self, N=50, J=1, init=True):
         self.J = J
@@ -169,19 +184,12 @@ class Isingmodel:
             magnetization_avg[i] = np.mean(magnetization_list[group, :], axis=0)
         return magnetization_avg
 
-    def get_susceptibility(self, N_array, betas, steps, sweeps, iterations):
-        variance_list = np.zeros((iterations * len(N_array), len(betas)))
-        list_index = 0
-        for t in range(0, iterations):
-            for index1, i in enumerate(N_array):
-                variance = np.zeros(len(betas))
-                for index2, s in enumerate(betas):
-                    spins, energies, equilibrium, mag_squared = self.metropolis(self.grid(i), steps[index1], s,
-                                                                                self.get_energy(self.grid(i)), i)
-                    variance[index2] = s * (
-                            mag_squared[-sweeps[index1]:].mean() - spins[-sweeps[index1]:].mean() ** 2) / i ** 2
-                variance_list[list_index] = variance
-                list_index += 1
+    @staticmethod
+    def get_susceptibility(N_array, betas, steps, sweeps, iterations):
+        args_list = [(N_array, betas, steps, sweeps) for t in range(0, iterations)]
+        with multiprocessing.Pool() as pool:
+            flat_results = pool.starmap(calc_susceptibility, args_list)
+        variance_list = np.array(flat_results).reshape((iterations * len(N_array), len(betas)))
         variance_avg = np.zeros((len(N_array), len(betas)))
         for i in range(0, len(N_array)):
             group = range(i, len(variance_list), len(N_array))
