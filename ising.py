@@ -88,12 +88,10 @@ class Isingmodel:
             elif dE <= 0:
                 arr_spin[x, y] = spin_prime
                 energy += dE
-
             if t % (N ** 2) == 0:
                 total_spin[t // (N ** 2)] = arr_spin.sum()
                 total_energy[t // (N ** 2)] = energy
         mag_squared = total_spin ** 2
-
         return total_spin, total_energy, arr_spin, mag_squared
 
     def plot(self, equilibrium, cmap, times, beta, save=False):
@@ -143,10 +141,8 @@ class Isingmodel:
             elif dE <= 0:
                 arr_spin[x, y] = spin_prime
                 energy += dE
-
             if t % (N ** 2) == 0:
                 animation_arr[t // (N ** 2)] = arr_spin.copy()
-
         return animation_arr
 
     @staticmethod
