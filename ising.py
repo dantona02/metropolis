@@ -37,6 +37,7 @@ def calc_susceptibility(N_array, betas, steps, sweeps):
         all_sus.append(variance)
     return all_sus
 
+
 class Isingmodel:
     def __init__(self, N=50, J=1, init=True):
         self.J = J
