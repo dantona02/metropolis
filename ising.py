@@ -11,10 +11,10 @@ def calc_magnetization(N_array, betas, steps, sweeps):
     all_magnetizations = []
     for index1, i in enumerate(N_array):
         magnetization = np.zeros(len(betas))
+        helpmodel = Isingmodel(N=i)
+        grid = helpmodel.grid(i)
+        energy = helpmodel.get_energy(grid)
         for index2, s in enumerate(betas):
-            helpmodel = Isingmodel(N=i)
-            grid = helpmodel.grid(i)
-            energy = helpmodel.get_energy(grid)
             spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
             magnetization[index2] = spins[-sweep_index:].mean() / i ** 2
@@ -26,10 +26,10 @@ def calc_susceptibility(N_array, betas, steps, sweeps):
     all_sus = []
     for index1, i in enumerate(N_array):
         variance = np.zeros(len(betas))
+        helpmodel = Isingmodel(N=i)
+        grid = helpmodel.grid(i)
+        energy = helpmodel.get_energy(grid)
         for index2, s in enumerate(betas):
-            helpmodel = Isingmodel(N=i)
-            grid = helpmodel.grid(i)
-            energy = helpmodel.get_energy(grid)
             spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
             variance[index2] = s * (
