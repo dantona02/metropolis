@@ -146,7 +146,7 @@ class Isingmodel:
         return animation_arr
 
     @staticmethod
-    def save(frame_array, path, display_sweeps=True):
+    def save(frame_array, path, font_size, display_sweeps=True):
         pil_frames = []
         for i, frame in enumerate(frame_array):
             img = Image.fromarray(np.uint8(frame))
@@ -156,7 +156,7 @@ class Isingmodel:
             draw = ImageDraw.Draw(img)
             if display_sweeps:
                 text = f"Sweeps: {i}"
-                font = ImageFont.truetype("/Library/Fonts/Arial Unicode.ttf", 20)
+                font = ImageFont.truetype("/Library/Fonts/Arial Unicode.ttf", font_size)
                 draw.text((b // 2, 10), text, fill="red", font=font, anchor='mt')
             pil_frames.append(img)
 
@@ -192,3 +192,4 @@ class Isingmodel:
             group = range(i, len(variance_list), len(N_array))
             variance_avg[i] = np.mean(variance_list[group, :], axis=0)
         return variance_avg
+
