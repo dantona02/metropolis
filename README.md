@@ -40,10 +40,10 @@ An object of the class `Isingmodel` can be created like the following:
 ```python
 model = Isingmodel(N=50, init=True)
 ```
-- `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `.plot()`.
+- `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `plot()`.
 - `init` if set to `True`all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
 ### Plotting lattice
-To plot the lattice at a certain temperature after $N$ sweeps, we use the `.plot()` method.
+To plot the lattice at a certain temperature after $N$ sweeps, we use the `plot()` method.
 First let's initialize the model and set the required parameters:
 ```python
 N = 50
@@ -56,16 +56,16 @@ The next step is to get the lattice and the total energy of the system:
 lattice = model.grid(N)
 energy = model.get_energy(lattice)
 ```
-- `.grid()` returns the two-dimensional lattice as an array with shape $N\times N$
-- `.get_energy()` calculates the total energy of the system with its initial spin configuration
+- `grid()` returns the two-dimensional lattice as an array with shape $N\times N$
+- `get_energy()` calculates the total energy of the system with its initial spin configuration
 
-Now we can run the `.metropolis()` method and pass in all the parameters. This method returns an array for the current total spin and the current total energy of the system, each with shape `(1, sweeps)`,
+Now we can run the `metropolis()` method and pass in all the parameters. This method returns an array for the current total spin and the current total energy of the system, each with shape `(1, sweeps)`,
 an array with shape `(N, N)`, which represents the spin configuration of the lattice after a certain number of sweeps and an array with the squared total spin.
 ```python
 spins, energies, equilibrium, spin_sq = model.metropolis(lattice, sweeps, beta, energy, N)
 ```
-Running the `.metropolis()` method might take some time depending on the parameters passed to the method, even though it is already optimized with `numba`.
-Once it finished running, we can plot the result using `.plot()`:
+Running the `metropolis()` method might take some time depending on the parameters passed to the method, even though it is already optimized with `numba`.
+Once it finished running, we can plot the result using `plot()`:
 ```python
 model.plot(equilibrium=equilibrium, cmap='binary', times=sweeps, beta=beta, save=True)
 ```
@@ -75,8 +75,18 @@ model.plot(equilibrium=equilibrium, cmap='binary', times=sweeps, beta=beta, save
 - `save` if set to `True` the method will save the image to the current directory.
 
 ### Animating the ising model
-With the method `.animate()`of the Isingmodel class, it is possible to visualize und animate the ising model.
+It is possible to visualize und animate the ising model for different configurations.
+The initialization of N, beta, sweeps, model, lattice and energy works analogously to the previous paragraph.
+The method `animate()` returns an array of the shape `(sweeps, N, N)`:
+```python
+animation = model.animate(lattice, sweeps, beta, energy, N)
+```
+All method arguments operate as in the function `metropolis()`.
+The animation array can then be passed into the `save()` method.
+```python
+model.save(animation, path='C:\Users\<username>\myproject\animation.gif', font_size=20, display_sweeps=True)
+```
 
 <p align="center">
-  <img src="images/ising400.gif" alt="400 by 400 lattice" width="200">
+  <img src="images/ising400.gif" alt="400 by 400 lattice" width="300">
 </p>
