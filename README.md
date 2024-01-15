@@ -22,8 +22,8 @@ To maintain ergodicity, which means ensuring that the algorithm can reach and pr
 If the energy of the new state $x^{\prime}$ is less than the energy of the current state $x_t$ (i.e., $H\left(x^{\prime}\right)-H\left(x_t\right) \leq 0$), the system adopts state $x^{\prime}$. 
 f not, the system assumes state $x^{\prime}$ with a probability of $e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)}$; otherwise, $x^{\prime}$ is rejected and the system remains in state xt for the next step ($x_t+1 = x_t$).
 A random number $r$ within the range $[0, 1)$ determines whether $x^{\prime}$ is accepted or rejected:
-
-
+ if $r$ is less than or equal to $e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)}$, then $x^{\prime}$ is accepted. In state $x^{\prime}$, the selected spin $\sigma_a$ is flipped: 
+$x^{\prime}\left(\sigma_a\right)=-x_t\left(\sigma_a\right)$. This entire process of choosing a spin, proposing a new state, and then accepting or rejecting this proposal is referred to as an update.
 
 
 ## Module `animation`
