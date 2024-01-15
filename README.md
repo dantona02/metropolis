@@ -86,6 +86,12 @@ The animation array can then be passed into the `save()` method.
 ```python
 model.save(animation, path='C:\Users\<username>\myproject\animation.gif', font_size=20, display_sweeps=True)
 ```
+- `animation` return value of the `animate()` method.
+- `path` determines the location of the animation.
+- `font_size` sets the size of the text displayed in the animation.
+- `display_sweeps` if set to `True`, the past sweeps are displayed.
+
+The animation might look like the following:
 
 <p align="center">
   <img src="images/ising400.gif" alt="400 by 400 lattice" width="300">
