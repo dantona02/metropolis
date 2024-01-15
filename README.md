@@ -7,7 +7,7 @@ We consider a set $\Lambda$ of lattice sites, each with a set of adjacent sites 
 The interaction of two spin couples nearest neighbors is denoted as $\langle i j\rangle$.
 For any two adjacent sites $i, j \in \Lambda$ there is an interaction $J_{ij}$. In addition, a site $j \in \Lambda$ has an external field $B_j$ interacting with it.
 Then the energy of a certain configuration is given by the Hamiltonian
-$$H=-\sum_{\langle i j\rangle} J_{ij} \sigma_i \sigma_j-\sum_i B_j \sigma_i$$.
+$$H=-\sum_{\langle i j\rangle} J_{ij} \sigma_i \sigma_j-\sum_i B_j \sigma_i$$
 If we chose $J>0$ the systems forms a ferromagnet, whereas $J<0$ implies a antiferromagnetic system.
 To simplify matters, we set $J=1$ and $B=0$.
 ### Metropolis Algorithm
