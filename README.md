@@ -24,6 +24,9 @@ f not, the system assumes state $x^{\prime}$ with a probability of $e^{-\beta \c
 A random number $r$ within the range $[0, 1)$ determines whether $x^{\prime}$ is accepted or rejected:
  if $r$ is less than or equal to $e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)}$, then $x^{\prime}$ is accepted. In state $x^{\prime}$, the selected spin $\sigma_a$ is flipped: 
 $x^{\prime}\left(\sigma_a\right)=-x_t\left(\sigma_a\right)$. This entire process of choosing a spin, proposing a new state, and then accepting or rejecting this proposal is referred to as an update.
+Once the system reached its equilibrium state, we can approximate the observables as time average of these states.
+For the magnetization we get
+$$\left\langle M\right\rangle=\frac{1}{N^2}\sum_{i} \sigma_i$$
 
 
 ## Module `animation`
