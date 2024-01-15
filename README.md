@@ -78,5 +78,5 @@ model.plot(equilibrium=equilibrium, cmap='binary', times=sweeps, beta=beta, save
 With the method `.animate()`of the Isingmodel class, it is possible to visualize und animate the ising model.
 
 <p align="center">
-  <img src="images/ising400.gif" alt="400 by 400 lattice">
+  <img src="images/ising400.gif" alt="400 by 400 lattice" width="200">
 </p>
