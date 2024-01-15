@@ -31,18 +31,19 @@ and for the susceptibility
 $$\chi=\beta\left(\left\langle M^2\right\rangle-\left\langle M\right\rangle^2\right)$$
 
 
-## Module `animation`
-There are a few custom classes implemented in the code that need a little bit of explanation. The module [animation](https://github.com/dantona02/projects/blob/main/animation.py) has the following classes:
-- ### class `HaloPoint`
-  An object of the class `HaloPoint` can be created like the following:
+## Module `ising`
+The module [ising](https://github.com/dantona02/metropolis/blob/main/ising.py) contains the class `Isingmodel`.
+An object of this class can be initialized like the following:
+- ### Initializing class object
+  An object of the class `Isingmodel` can be created like the following:
   ```python
-  halopoint = HaloPoint(ax, mass, color_decay, color1, color2='white')
+  model = Isingmodel(N=50, init=True)
   ```
-  - `ax` corresponds to the current instance of `Axes` of the animation.
-  - `mass` is a parameter to change the size of `halopoint` according to the mass, even if that doesn't reflect the physical reality.
-  - `color_decay` changes the decay of the halo. The larger the value of `color_decay`, the smaller the halo.
-  - `color1` sets the color of the point.
-  - `color2` should generally not be changed.
+  - `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `.plot()`.
+  - `init` if set to `True`all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
     
+
+
+
   **It is very important to note that the `get_artists()` method returns a list of `Artists`, which must then be merged into one list to be returned by the update-function.
     This applies to all other animation classes contained in this module.**
