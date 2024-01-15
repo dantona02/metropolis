@@ -34,14 +34,15 @@ $$\chi=\beta\left(\left\langle M^2\right\rangle-\left\langle M\right\rangle^2\ri
 ## Module `ising`
 The module [ising](https://github.com/dantona02/metropolis/blob/main/ising.py) contains the class `Isingmodel`.
 An object of this class can be initialized like the following:
-- ### Initializing class object
-  An object of the class `Isingmodel` can be created like the following:
-  ```python
-  model = Isingmodel(N=50, init=True)
-  ```
-  - `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `.plot()`.
-  - `init` if set to `True`all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
-    
+### Initializing class object
+An object of the class `Isingmodel` can be created like the following:
+```python
+model = Isingmodel(N=50, init=True)
+```
+  
+- `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `.plot()`.
+- `init` if set to `True`all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
+
 
 
 
