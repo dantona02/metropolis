@@ -24,6 +24,7 @@ f not, the system assumes state $x^{\prime}$ with a probability of $e^{-\beta \c
 A random number $r$ within the range $[0, 1)$ determines whether $x^{\prime}$ is accepted or rejected:
  if $r$ is less than or equal to $e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)}$, then $x^{\prime}$ is accepted. In state $x^{\prime}$, the selected spin $\sigma_a$ is flipped: 
 $x^{\prime}\left(\sigma_a\right)=-x_t\left(\sigma_a\right)$. This entire process of choosing a spin, proposing a new state, and then accepting or rejecting this proposal is referred to as an update.
+After performing $N\times N$ metropolis updates, which equals one sweep, each spin was statistically updated once. To properly thermalize the system, the number of sweeps should not be to low.
 Once the system reached its equilibrium state, we can approximate the observables as time average of these states.
 For the magnetization we get
 $$\left\langle M\right\rangle=\frac{1}{N^2}\sum_{i} \sigma_i$$
@@ -39,10 +40,24 @@ An object of the class `Isingmodel` can be created like the following:
 ```python
 model = Isingmodel(N=50, init=True)
 ```
-  
 - `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `.plot()`.
 - `init` if set to `True`all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
-
+### Plotting lattice
+To plot the lattice at a certain temperature after $N$ sweeps, we use the `.plot()` method.
+First let's initialize the model and set the required parameters:
+```python
+N = 50
+beta = 0.5
+sweeps = 2500
+model = Isingmodel(N=N, init=True)
+```
+The next step is to get the lattice and the total energy of the system:
+```python
+lattice = model.grid(N)
+energy = model.get_energy(lattice)
+```
+- `.grid()` returns the two-dimensional lattice as an array with shape $N\times N$
+- `.get_energy()` calculates the total energy of the system with its initial spin configuration
 
 
 
