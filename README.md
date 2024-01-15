@@ -73,3 +73,7 @@ model.plot(equilibrium=equilibrium, cmap='binary', times=sweeps, beta=beta, save
 - `cmap` can be chosen arbitrarily, but it needs to be supported by `matplotlib`.
 - `times` represents the number of sweeps.
 - `save` if set to `True` the method will save the image to the current directory.
+
+### Animating the ising model
+With the method `.animate()`of the Isingmodel class, it is possible to visualize und animate the ising model.
+![400 by 400 lattice](images/ising400.gif)
