@@ -58,7 +58,11 @@ energy = model.get_energy(lattice)
 ```
 - `.grid()` returns the two-dimensional lattice as an array with shape $N\times N$
 - `.get_energy()` calculates the total energy of the system with its initial spin configuration
-
+Now we can run the `.metropolis()` method and pass in all the parameters. This method returns an array for the current total spin and the current total energy of the system, each with shape `(1, sweeps)`,
+an array with shape `(N, N)`, which represents the spin configuration of the lattice after a certain number of sweeps and an array with the squared total spin.
+```python
+spins, energies, equilibrium, spin_sq = model.metropolis(lattice, sweeps, beta, energy, N)
+```
 
 
   **It is very important to note that the `get_artists()` method returns a list of `Artists`, which must then be merged into one list to be returned by the update-function.
