@@ -17,7 +17,7 @@ For the transition from the current state $x_t$ to the new state $x^{\prime}$, w
 
 $$w_{x_t x^{\prime}} d t= \begin{cases}e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)} & \text { if } H\left(x^{\prime}\right)-H\left(x_t\right) \geq 0 \\ 1 & \text { otherwise }\end{cases}$$
 
-where $\beta$ is the inverse temperature $\beta=\frac{1}{k_b T}.
+where $\beta$ is the inverse temperature $\beta=\frac{1}{k_b T}$.
 To maintain ergodicity, which means ensuring that the algorithm can reach and propose all possible states, a proposed state x^{\prime} is only different from the current state by a single spin $\sigma_a$. 
 If the energy of the new state x^{\prime} is less than the energy of the current state xt (i.e., $H\left(x^{\prime}\right)-H\left(x_t\right) \leq 0$), the system adopts state x^{\prime}. 
 f not, the system assumes state x^{\prime} with a probability of $e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)}$; otherwise, x^{\prime} is rejected and the system remains in state xt for the next step ($x_t+1 = x_t).
