@@ -82,7 +82,7 @@ class Isingmodel:
                 E_t += - spin_t * arr_spin[x, ny]
                 E_prime += - spin_prime * arr_spin[x, ny]
             dE = E_prime - E_t
-            if (dE > 0) & (np.random.random() < np.exp(-beta * dE)):
+            if (dE > 0) & (np.random.random() <= np.exp(-beta * dE)):
                 arr_spin[x, y] = spin_prime
                 energy += dE
             elif dE <= 0:
@@ -135,7 +135,7 @@ class Isingmodel:
                 E_t += - spin_t * arr_spin[x, ny]
                 E_prime += - spin_prime * arr_spin[x, ny]
             dE = E_prime - E_t
-            if (dE > 0) & (np.random.random() < np.exp(-beta * dE)):
+            if (dE > 0) & (np.random.random() <= np.exp(-beta * dE)):
                 arr_spin[x, y] = spin_prime
                 energy += dE
             elif dE <= 0:
