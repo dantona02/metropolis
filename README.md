@@ -27,6 +27,8 @@ $x^{\prime}\left(\sigma_a\right)=-x_t\left(\sigma_a\right)$. This entire process
 Once the system reached its equilibrium state, we can approximate the observables as time average of these states.
 For the magnetization we get
 $$\left\langle M\right\rangle=\frac{1}{N^2}\sum_{i} \sigma_i$$
+and for the susceptibility
+$$\chi=\beta\left(\left\langle M^2\right\rangle-\left\langle M\right\rangle^2\right)$$
 
 
 ## Module `animation`
