@@ -15,7 +15,7 @@ The system is modeled on a quadratic lattice $\Lambda$ with $N$ nodes in each di
 At time $t$, the system is in a state     . To move forward to time $t+1$, a new state $x^{\prime}$ is randomly proposed.
 For the transition from the current state $x_t$ to the new state $x^{\prime}$, which is referred to as an update, a transition rate $w_{x_t x^{\prime}}$ is used within the time interval $dt$:
 
-$$w_{x_t x^{\prime}} d t= \begin{cases}e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)} & \text { if } H\left(x^{\prime}\right)-H\left(x_t\right) \geq 0 \\ 1 & \text { otherwise }\end{cases}$$
+$$w_{x_t x^{\prime}} d t= \begin{cases}e^{-\beta \cdot\left(H\left(x^{\prime}\right)-H\left(x_t\right)\right)} & \text { if } H\left(x^{\prime}\right)-H\left(x_t\right) \geq 0 \\\ 1 & \text { otherwise }\end{cases}$$
 
 where $\beta$ is the inverse temperature $\beta=\frac{1}{k_b T}$.
 To maintain ergodicity, which means ensuring that the algorithm can reach and propose all possible states, a proposed state x^{\prime} is only different from the current state by a single spin $\sigma_a$. 
