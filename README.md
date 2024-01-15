@@ -64,4 +64,12 @@ an array with shape `(N, N)`, which represents the spin configuration of the lat
 ```python
 spins, energies, equilibrium, spin_sq = model.metropolis(lattice, sweeps, beta, energy, N)
 ```
-
+Running the `.metropolis()` method might take some time depending on the parameters passed to the method, even though it is already optimized with `numba`.
+Once it finished running, we can plot the result using `.plot()`:
+```python
+model.plot(equilibrium=equilibrium, cmap='binary', times=sweeps, beta=beta, save=True)
+```
+- `equilibrium` takes the third return argument of the `metropolis()` method as the input.
+- `cmap` can be chosen arbitrarily, but it needs to be supported by `matplotlib`.
+- `times` represents the number of sweeps.
+- `save` if set to `True` the method will save the image to the current directory.
