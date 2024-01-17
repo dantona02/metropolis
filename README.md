@@ -126,5 +126,7 @@ The array can then be visualized with `matplotlib`.
 - `iterations` determines how often the calculations are performed per value from `betas`. This further reduces the statistical fluctuations and thus improves the quality of the calculated values.
 Depending on the number of available processor cores, this in turn also increases the calculation time.
 
+`get_susceptibility()` works exactly the same way as `get_magnetization()`.
+
 ### Required packages
 `numpy`, `scipiy`, `matplotlib`, `pillow` and `numba`. They can all be installed via `pip`or `conda`.
