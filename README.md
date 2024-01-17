@@ -91,8 +91,31 @@ model.save(animation, path='C:\Users\<username>\myproject\animation.gif', font_s
 - `font_size` sets the size of the text displayed in the animation.
 - `display_sweeps` if set to `True`, the past sweeps are displayed.
 
+**Important**: Before using the method `save()`, the path to the user's font must be changed to the corresponding location.
+To do that, navigate to `ImageFont.truetype("/Library/Fonts/Arial Unicode.ttf", font_size)` in the `save()`method of `Isingmodel` and change to path to the one of the desired font.
+
 The animation might look like the following:
 
 <p align="center">
   <img src="images/ising400.gif" alt="400 by 400 lattice" width="300">
 </p>
+
+### Calculating magnetization and susceptibility
+The two methods `get_magnetization()` and `get_susceptibility()` of the class `Isingmodel` allow to calculate the magnetization
+and the susceptibility of a system for several different $\beta$ and lattice sizes.
+As this computation takes a lot of resources, it is recommended to reduce the size of the system's lattice.
+The magnetization can be computed like the following:
+```python
+betas = np.linspace(0.2, 0.65, 30)
+N = [8, 10]
+sweeps = [20000 for i in N]
+sampleSize = [12000 for i in N]
+iterations = 2000
+```
+```python
+model = Isingmodel()
+magnetization = model.get_magnetization(N, betas, steps, sweeps, iterations)
+```
+Both methods return an array of shape `(len(N), len(betas))`.
+
+- `N` 
