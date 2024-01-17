@@ -117,6 +117,7 @@ model = Isingmodel()
 magnetization = model.get_magnetization(N, betas, steps, sweeps, iterations)
 ```
 Both methods return an array of shape `(len(N), len(betas))`.
+The array can then be visualized with `matplotlib`.
 
 - `N` corresponds to the lattice sizes. This needs to be an array, even if `N` contains only one element.
 - `betas` provides an array of values of the inverse temperature. An associated magnetization value is calculated for each value from `betas`.
@@ -124,3 +125,6 @@ Both methods return an array of shape `(len(N), len(betas))`.
 - `sampleSize` corresponds to the number of sweeps to be averaged from the return values of the `metropolis()` method in order to reduce statistical fluctuations.
 - `iterations` determines how often the calculations are performed per value from `betas`. This further reduces the statistical fluctuations and thus improves the quality of the calculated values.
 Depending on the number of available processor cores, this in turn also increases the calculation time.
+
+### Required packages
+`numpy`, `scipiy`, `matplotlib`, `pillow` and `numba`. They can all be installed via `pip`or `conda`.
