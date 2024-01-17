@@ -33,7 +33,7 @@ def calc_susceptibility(N_array, betas, steps, sweeps):
             spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
             variance[index2] = s * (
-                            mag_squared[-sweep_index:].mean() - spins[-sweep_index:].mean() ** 2) / i ** 2
+                    mag_squared[-sweep_index:].mean() - spins[-sweep_index:].mean() ** 2) / i ** 2
         all_sus.append(variance)
     return all_sus
 
@@ -192,4 +192,3 @@ class Isingmodel:
             group = range(i, len(variance_list), len(N_array))
             variance_avg[i] = np.mean(variance_list[group, :], axis=0)
         return variance_avg
-
