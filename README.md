@@ -41,7 +41,7 @@ An object of the class `Isingmodel` can be created like the following:
 model = Isingmodel(N=50, init=True)
 ```
 - `N` corresponds to the size of the lattice. This is only needed if one wants to use the function `plot()`.
-- `init` if set to `True`all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
+- `init` if set to `True` all spins of the lattice are initialized up (i.e. $\sigma_i=1$). If set to `Fasle`, about 50 percent of the spins will be positiv and the other half will be negativ.
 ### Plotting lattice
 To plot the lattice at a certain temperature after $N$ sweeps, we use the `plot()` method.
 First let's initialize the model and set the required parameters:
@@ -118,4 +118,8 @@ magnetization = model.get_magnetization(N, betas, steps, sweeps, iterations)
 ```
 Both methods return an array of shape `(len(N), len(betas))`.
 
-- `N` 
+- `N` corresponds to the lattice sizes. This needs to be an array, even if `N` contains only one element.
+- `betas` provides an array of values of the inverse temperature. An associated magnetization value is calculated for each value from `betas`.
+- `sweeps` represents the number of sweeps.
+- `sampleSize` corresponds to the number of sweeps to be averaged from the return values of the `metropolis()` method in order to reduce statistical fluctuations.
+- 
