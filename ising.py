@@ -17,7 +17,7 @@ def calc_magnetization(N_array, betas, steps, sweeps):
         for index2, s in enumerate(betas):
             spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
-            magnetization[index2] = spins[-sweep_index:].mean() / i ** 2
+            magnetization[index2] = abs(spins[-sweep_index:]).mean() / i ** 2
         all_magnetizations.append(magnetization)
     return all_magnetizations
 
@@ -33,7 +33,7 @@ def calc_susceptibility(N_array, betas, steps, sweeps):
             spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
             variance[index2] = s * (
-                    mag_squared[-sweep_index:].mean() - spins[-sweep_index:].mean() ** 2) / i ** 2
+                    mag_squared[-sweep_index:].mean() - abs(spins[-sweep_index:]).mean() ** 2) / i ** 2
         all_sus.append(variance)
     return all_sus
 
