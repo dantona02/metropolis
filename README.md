@@ -113,7 +113,7 @@ betas = np.linspace(0.2, 0.65, 30)
 N = [8, 10]
 sweeps = [20000 for i in N]
 sampleSize = [12000 for i in N]
-iterations = 2000
+iterations = 10
 ```
 ```python
 model = Isingmodel()
