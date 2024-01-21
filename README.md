@@ -30,7 +30,10 @@ For the magnetization we get
 $$\left\langle M\right\rangle=\frac{1}{N^2}\sum_{i} \sigma_i$$
 and for the susceptibility
 $$\chi=\beta\left(\left\langle M^2\right\rangle-\left\langle M\right\rangle^2\right)$$
-
+In a system approaching the thermodynamic limit and existing below the critical temperature, it's equally probable for the system to magnetize positively or negatively.
+However, without an external magnetic field, it's impossible for the system to switch between positive and negative spontaneous magnetization.
+In contrast, for systems of finite size, there is a specific time period, dependent on the lattice size, during which the system can transition from one state of spontaneous magnetization to the other.
+Therefore, simply averaging the magnetization would result in an inaccurate value. For this reason, the absolute value of the magnetization, represented as $\langle|M|\rangle$, is used as the order parameter instead of $\left\langle M\right\rangle$ [1].
 
 ## Module `ising`
 The module [ising](https://github.com/dantona02/metropolis/blob/main/ising.py) contains the class `Isingmodel`.
