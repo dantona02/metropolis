@@ -130,3 +130,6 @@ Depending on the number of available processor cores, this in turn also increase
 
 ### Required packages
 `numpy`, `scipiy`, `matplotlib`, `pillow` and `numba`. They can all be installed via `pip`or `conda`.
+
+### References
+- [1] Müller-Krumbhaar, H. (2016). [The Hobbyhorse of Magnetic Systems: The Ising Model](https://www.researchgate.net/publication/304163856_The_Hobbyhorse_of_Magnetic_Systems_The_Ising_Model). ResearchGate.
