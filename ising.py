@@ -15,7 +15,7 @@ def calc_magnetization(N_array, betas, steps, sweeps):
         grid = helpmodel.grid(i)
         energy = helpmodel.get_energy(grid)
         for index2, s in enumerate(betas):
-            spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
+            spins, _, _, _ = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
             magnetization[index2] = abs(spins[-sweep_index:]).mean() / i ** 2
         all_magnetizations.append(magnetization)
@@ -30,7 +30,7 @@ def calc_susceptibility(N_array, betas, steps, sweeps):
         grid = helpmodel.grid(i)
         energy = helpmodel.get_energy(grid)
         for index2, s in enumerate(betas):
-            spins, energies, equilibrium, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
+            spins, _, _, mag_squared = helpmodel.metropolis(grid, steps[index1], s, energy, i)
             sweep_index = int(sweeps[index1])
             variance[index2] = s * (
                     mag_squared[-sweep_index:].mean() - abs(spins[-sweep_index:]).mean() ** 2) / i ** 2
@@ -95,7 +95,7 @@ class Isingmodel:
         return total_spin, total_energy, arr_spin, mag_squared
 
     def plot(self, equilibrium, cmap, times, beta, save=False):
-        fig, ax = plt.subplots(dpi=150)
+        fig, ax = plt.subplots(dpi=300)
         plt.rcParams["font.family"] = "times"
         plt.rcParams["text.usetex"] = True
         plt.title(
