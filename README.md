@@ -117,7 +117,7 @@ iterations = 10
 ```
 ```python
 model = Isingmodel()
-magnetization = model.get_magnetization(N, betas, steps, sweeps, iterations)
+magnetization = model.get_magnetization(N, betas, sweeps, sampleSize, iterations)
 ```
 Both methods return an array of shape `(len(N), len(betas))`.
 The array can then be visualized with `matplotlib`.

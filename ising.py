@@ -58,7 +58,7 @@ class Isingmodel:
         kernel = generate_binary_structure(2, 1)
         kernel[1][1] = False
         result = - self.J * grid * convolve(grid, kernel, mode='wrap')
-        return result.sum()
+        return result.sum() #factor of 0.5 should be included but is not included for sake of simplicity
 
     @staticmethod
     @numba.njit("Tuple((f8[:], f8[:], f8[:,:], f8[:]))(f8[:,:], i8, f8, f8, i8)", nopython=True, nogil=True)
