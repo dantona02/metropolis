@@ -6,3 +6,20 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.swp
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MacOS
+.DS_Store
+
+# VS Code
+.vscode/
